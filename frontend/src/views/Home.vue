@@ -14,32 +14,33 @@
         </button>
     </div>
 
-    <button @click="sendRequestToAPI">Call API</button>
+    <button @click="sendRequestToAPI" style="margin-top:30px;">Call API</button>
+    {{ apiResp }}
 </template>
 
 <script setup>
 import {useAuthStore} from '@/stores/authStore';
 import {protectedRoute} from '@/services/apiService';
 import {useRouter, useRoute} from 'vue-router';
-import {watch} from 'vue';
+import {watch, ref} from 'vue';
 
 const authStore = useAuthStore();
 const router = useRouter();
 const route = useRoute();
+const apiResp = ref('');
 
 const sendRequestToAPI = async () => {
     try {
         const resp = await protectedRoute();
-        console.log(resp);
+        apiResp.value = resp.status;
     } catch (error) {
-        console.error(error);
+        apiResp.value = error.status;
     }
 };
 
 const signinWithGoogle = async () => {
     try {
         await authStore.signInWithGoogle();
-        router.push('/');
     } catch (error) {
         console.error(error);
     }
@@ -48,7 +49,6 @@ const signinWithGoogle = async () => {
 const signOut = async () => {
     try {
         await authStore.logout();
-        router.push('/');
     } catch (error) {
         console.error(error);
     }
