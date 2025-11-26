@@ -4,8 +4,8 @@ import (
 	"context"
 
 	fbauth "firebase.google.com/go/v4"
-	"github.com/radovskyb/scaff-firebase-auth/auth"
-	"github.com/radovskyb/scaff-firebase-auth/auth/firebase"
+	"github.com/radovskyb/Go-API-VueJS-Frontend-Firebase-Auth/auth"
+	"github.com/radovskyb/Go-API-VueJS-Frontend-Firebase-Auth/auth/firebase"
 	"google.golang.org/api/option"
 )
 

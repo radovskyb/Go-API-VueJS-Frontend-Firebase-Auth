@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/radovskyb/scaff-firebase-auth/auth"
+	"github.com/radovskyb/Go-API-VueJS-Frontend-Firebase-Auth/auth"
 )
 
 var (

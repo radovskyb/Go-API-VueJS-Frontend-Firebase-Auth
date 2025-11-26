@@ -5,7 +5,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/radovskyb/scaff-firebase-auth/auth"
+	"github.com/radovskyb/Go-API-VueJS-Frontend-Firebase-Auth/auth"
 )
 
 type Handler struct {

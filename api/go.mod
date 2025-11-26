@@ -1,4 +1,4 @@
-module github.com/radovskyb/scaff-firebase-auth
+module github.com/radovskyb/Go-API-VueJS-Frontend-Firebase-Auth
 
 go 1.24.3
 

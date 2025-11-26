@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/radovskyb/scaff-firebase-auth/cfg"
-	"github.com/radovskyb/scaff-firebase-auth/router"
+	"github.com/radovskyb/Go-API-VueJS-Frontend-Firebase-Auth/cfg"
+	"github.com/radovskyb/Go-API-VueJS-Frontend-Firebase-Auth/router"
 )
 
 func main() {

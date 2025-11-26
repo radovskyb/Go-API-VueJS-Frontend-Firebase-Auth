@@ -4,7 +4,7 @@ import (
 	"context"
 
 	fbauth "firebase.google.com/go/v4/auth"
-	"github.com/radovskyb/scaff-firebase-auth/auth"
+	"github.com/radovskyb/Go-API-VueJS-Frontend-Firebase-Auth/auth"
 )
 
 type client struct {
