@@ -11,8 +11,14 @@ import (
 func Setup(dp *cfg.APIDependencies) (http.Handler, error) {
 	h := handler.New(dp.AuthClient)
 
+	// Routes wouldn't typically be defined here (would be from within the handler package.)
+	// This is just for the example.
 	f := handler.HandlerFunc(func(w http.ResponseWriter, r *http.Request) error {
-		return json.NewEncoder(w).Encode(map[string]int{"status": http.StatusOK})
+		token, found := handler.GetDecodedTokenFromContext(r.Context())
+		if !found {
+			return handler.ErrAuthCheck
+		}
+		return json.NewEncoder(w).Encode(map[string]any{"status": http.StatusOK, "uid": token.UID})
 	})
 
 	mux := http.NewServeMux()

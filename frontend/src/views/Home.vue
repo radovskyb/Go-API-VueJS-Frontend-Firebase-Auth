@@ -15,7 +15,9 @@
     </div>
 
     <button @click="sendRequestToAPI" style="margin-top:30px;">Call API</button>
-    {{ apiResp }}
+    <div v-if="apiResp" style="margin-top:30px;">
+        {{ apiResp }} <span v-if="apiRespUID">- {{ apiRespUID }}</span>
+    </div>
 </template>
 
 <script setup>
@@ -28,11 +30,13 @@ const authStore = useAuthStore();
 const router = useRouter();
 const route = useRoute();
 const apiResp = ref('');
+const apiRespUID = ref('');
 
 const sendRequestToAPI = async () => {
     try {
         const resp = await protectedRoute();
         apiResp.value = resp.status;
+        apiRespUID.value = resp.uid;
     } catch (error) {
         apiResp.value = error.status;
     }
@@ -41,6 +45,8 @@ const sendRequestToAPI = async () => {
 const signinWithGoogle = async () => {
     try {
         await authStore.signInWithGoogle();
+        apiResp.value = '';
+        apiRespUID.value = '';
     } catch (error) {
         console.error(error);
     }
@@ -49,6 +55,8 @@ const signinWithGoogle = async () => {
 const signOut = async () => {
     try {
         await authStore.logout();
+        apiResp.value = '';
+        apiRespUID.value = '';
     } catch (error) {
         console.error(error);
     }

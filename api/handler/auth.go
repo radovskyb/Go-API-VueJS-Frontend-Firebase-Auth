@@ -11,7 +11,7 @@ import (
 
 var (
 	ErrInvalidAuthHeaderFormat = errors.New("invalid Authorization header format (Bearer token expected)")
-	ErrAuthCheck               = errors.New("jwt invalid")
+	ErrAuthCheck               = errors.New("jwt invalid or missing")
 )
 
 func tokenAuthCheck(ctx context.Context, ac auth.Client, idToken string) (*auth.Token, error) {
